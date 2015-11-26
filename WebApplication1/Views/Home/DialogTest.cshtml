@@ -3,27 +3,49 @@
 
 }
 
-<div id="dialogMessages" class="dialog dialogdetail" style="width: 550px;">
-    <div class="dialog-topLine" style="background-color: #34aadc; border-top-left-radius: 3px;
+<div class="btn btn-default" id="button">show dialog</div>
+
+
+<div id="dialogContainer" class="dialog-container">
+    <div class="popupBackground"></div>
+    <div class="dialog dialogdetail">
+        <div class="dialog-topLine" style="background-color: #34aadc; border-top-left-radius: 3px;
             border-top-right-radius: 3px; height: 40px;">
-        <div style="float: left; padding-left: 10px; padding-top: 8px; font-weight: bold">
-            <span id="header_dialog_notification" class="header_dialog">test</span>
+            <div style="float: left; padding-left: 10px; padding-top: 8px; font-weight: bold">
+                <span class="header_dialog">test</span>
+            </div>
+            <div class="dialog-maximizeButton" style="float: right">M</div>
+            <div class="dialog-closeButton">C</div>
         </div>
-        <div class="dialog-closeButton" onclick="close_message_fd();"></div>
-    </div>
-    <div class="cnt" style="height: 340px; overflow: auto">
+        <div class="cnt" style="overflow: auto; background-color: red">
+        </div>
     </div>
 </div>
-
 @section scripts
 {
     <script type="text/javascript">
-        $(function () {
-            $('#dialogMessages').draggable({ handle: ".dialog-topLine" });
-            $("#dialogMessages").on("dblclick", function () {
-                $(this).css({ 'width':'100%', 'height':'100%', 'top':0, 'left':0, 'margin-left':0, 'margin-top':0 });
+        $(function() {
 
+            $('#dialogContainer').ssdialog({
+                "width": 500,
+                "height": 300,
+                "title": "me me var",
+                opened: function() {
+                    alert('gaixsna');
+                },
+                closing: function() {
+                    alert('ixureba');
+                },
+                closed: function() {
+                    alert('daixura');
+                }
             });
+
+
+            $("#button").on("click", function () {
+                $('#dialogContainer').show();
+            });
+            
 
 
         });
