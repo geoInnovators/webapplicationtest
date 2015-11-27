@@ -91,14 +91,7 @@
                     toggleExpand(obj);
                 });
                 obj.find('.dialog-closeButton').on('click', function () {
-                    if (typeof pluginData.closing == 'function') {
-                        var res = pluginData.closing.call(this);
-                        if (res === false) return;
-                    }
-                    close(obj);
-                    if (typeof pluginData.closed == 'function') {
-                        pluginData.closed.call(this);
-                    }
+                    methods.close.apply(obj);
                 });
 
 
